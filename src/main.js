@@ -2,8 +2,8 @@ import './style.css'
 import Phaser from 'phaser'
 
 const sizes={
-  width:500,
-  height:500
+  width:1000,
+  height:600
 }
 
 class GameScene extends Phaser.Scene{
@@ -11,21 +11,25 @@ class GameScene extends Phaser.Scene{
     super("scene-game");
     this.player;
     this.cursor;
-    this.playerSpeed = 150;
+    this.playerSpeed = 250;
   }
 
   // loads assets
   preload(){
     this.load.image("bg1", "/assets/bg1.png");
-    this.load.image("charSprite", "/assets/charSprite.png");
+    this.load.image("charSprite", "/assets/charSprite.svg");
+    this.load.image("laser", "/assets/laser.svg");
   }
 
   create(){
-    this.add.image(0,0,"bg1").setOrigin(0,0).setScale(0.45);
-    this.player = this.physics.add.sprite(100, sizes.height - 100, "charSprite").setOrigin(0, 0).setScale(0.2);
+    this.add.image(0,0,"bg1").setOrigin(0,0);
+    this.player = this.physics.add.sprite(100, sizes.height - 100, "charSprite").setOrigin(0.5, 0.5);
 
     this.player.setCollideWorldBounds(true);
-    this.cursor = this.input.keyboard.createCursorKeys();
+    this.cursor  = this.input.keyboard.addKeys({ 'up': Phaser.Input.Keyboard.KeyCodes.W, 
+                                                 'down': Phaser.Input.Keyboard.KeyCodes.S,
+                                                 'left': Phaser.Input.Keyboard.KeyCodes.A, 
+                                                 'right': Phaser.Input.Keyboard.KeyCodes.D,});
   }
 
   update(){
@@ -46,6 +50,20 @@ class GameScene extends Phaser.Scene{
     } else if (down.isDown) {
       this.player.setVelocityY(this.playerSpeed);
     }
+
+    // positions player so that player always faces direction of cursor
+    const pointer = this.input.activePointer;
+
+    const angle = Phaser.Math.Angle.Between(
+        this.player.x,
+        this.player.y,
+        pointer.worldX,
+        pointer.worldY
+    );
+
+    this.player.rotation = angle;
+
+
   }
 }
 
