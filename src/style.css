@@ -1,46 +1,75 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --dkClr:#181818;
-  --liClr:whitesmoke;
-  --accClr:#0D0D35;
+  --dkClr: #181818;
+  --liClr: whitesmoke;
+  --accClr: #0D0D35;
 }
 
-*{
+/* Reset */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html,body{
-  height:100%;
-}
-
-body{
+/* Full viewport background */
+html, body {
+  width: 100%;
+  height: 100%;
   background-color: var(--dkClr);
   color: var(--liClr);
-  display:flex;
+  display: flex;
   flex-direction: column;
-  min-height: 100vh;
-}
-
-header,footer{
-  display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 40px 20px;
+  justify-content: center;
+  overflow: hidden;
 }
 
-main{
-  flex:1;
-  display: flex;
+/* Optional UI overlay */
+header, footer {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
 }
 
-#gameCanvas{
-  border: 1px solid red;
+header {
+  top: 0;
+  padding: 12px;
+}
+
+footer {
+  bottom: 0;
+  padding: 12px;
+}
+
+/* Game container fixed size */
+#game-container {
+  width: 500px;
+  height: 500px;
+  position: relative; 
+  border: 2px solid black; 
+  background-color: var(--dkClr);
+}
+
+/* Fixed canvas inside container */
+#gameCanvas {
+  width: 500px;
+  height: 500px;
+  display: block;
+}
+
+/* Minimap border overlay */
+#minimap-border {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  z-index: 1;
+  top: 20px;          
+  left: 400px;         
+  width: 90px;          
+  height: 90px;         
+  border: 2px solid black;
+  pointer-events: none;
+  z-index: 5;
+  box-sizing: border-box;
 }
