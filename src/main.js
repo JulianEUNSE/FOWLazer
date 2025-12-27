@@ -18,7 +18,6 @@ class GameScene extends Phaser.Scene{
   preload(){
     this.load.image("bg1", "/assets/bg1.png");
     this.load.image("charSprite", "/assets/charSprite.svg");
-    this.load.image("laser", "/assets/laser.svg");
   }
 
   create(){
