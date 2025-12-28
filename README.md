@@ -10,14 +10,14 @@ A Phaser-based browser game that I am creating as a side hobby.
 ``` git clone https://github.com/JulianEUNSE/FOWLazer.git ``` 
 
 
-3. Install Dependencies
+2. Install Dependencies
 
 ``` npm install ``` 
 
 ``` npm install phaser ``` 
 
 
-5. Run the development server
+3. Run the development server
    
 ``` npm run dev ``` 
 
