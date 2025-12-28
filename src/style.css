@@ -1,6 +1,6 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --dkClr: #181818;
+  --dkClr: #71638e;
   --liClr: whitesmoke;
   --accClr: #0D0D35;
 }
@@ -50,7 +50,7 @@ footer {
   width: 500px;
   height: 500px;
   position: relative; 
-  border: 2px solid black; 
+  border: 2px solid var(--dkClr); 
   background-color: var(--dkClr);
 }
 
@@ -59,17 +59,4 @@ footer {
   width: 500px;
   height: 500px;
   display: block;
-}
-
-/* Minimap border overlay */
-#minimap-border {
-  position: absolute;
-  top: 20px;          
-  left: 400px;         
-  width: 90px;          
-  height: 90px;         
-  border: 2px solid black;
-  pointer-events: none;
-  z-index: 5;
-  box-sizing: border-box;
 }
